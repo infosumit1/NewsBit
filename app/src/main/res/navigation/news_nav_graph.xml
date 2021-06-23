@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/news_nav_graph"
+    app:startDestination="@id/topNewsFragment">
+
+    <fragment
+        android:id="@+id/topNewsFragment"
+        android:name="com.example.android.newsbit.ui.fragments.TopNewsFragment"
+        android:label="fragment_top_news"
+        tools:layout="@layout/fragment_top_news">
+        <action
+            android:id="@+id/action_topNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookmarkFragment"
+        android:name="com.example.android.newsbit.ui.fragments.BookmarkFragment"
+        android:label="fragment_bookmark"
+        tools:layout="@layout/fragment_bookmark">
+        <action
+            android:id="@+id/action_bookmarkFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleFragment"
+        android:name="com.example.android.newsbit.ui.fragments.ArticleFragment"
+        android:label="fragment_article"
+        tools:layout="@layout/fragment_article">
+        <argument
+            android:name="article"
+            app:argType="com.example.android.newsbit.models.Article" />
+    </fragment>
+    <fragment
+        android:id="@+id/exploreFragment"
+        android:name="com.example.android.newsbit.ui.fragments.ExploreFragment"
+        android:label="fragment_explore"
+        tools:layout="@layout/fragment_explore">
+
+        <action
+            android:id="@+id/action_exploreFragment_to_categoryNewsFragment"
+            app:destination="@id/categoryNewsFragment" />
+        <action
+            android:id="@+id/action_exploreFragment_to_sourceNewsFragment"
+            app:destination="@id/sourceNewsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryNewsFragment"
+        android:name="com.example.android.newsbit.ui.fragments.CategoryNewsFragment"
+        android:label="fragment_category_news"
+        tools:layout="@layout/fragment_category_news" >
+        <action
+            android:id="@+id/action_categoryNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <argument
+            android:name="isCustomCategory"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/sourceNewsFragment"
+        android:name="com.example.android.newsbit.ui.fragments.SourceNewsFragment"
+        android:label="fragment_source_news"
+        tools:layout="@layout/fragment_source_news" >
+        <argument
+            android:name="newsSourceId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_sourceNewsFragment_to_articleFragment"
+            app:destination="@id/articleFragment" />
+    </fragment>
+</navigation>
